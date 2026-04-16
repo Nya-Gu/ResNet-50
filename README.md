@@ -36,12 +36,12 @@ Pytorch에 구현된 모델과 동일한 구조, 동일한 파라미터 수(25M)
 - RandomHorizontalFlip(p=0.5)  
 - ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05)  
 
-| No. | 실험 모델 | 파라미터 | 데이터 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
-|:---:|:--------:|:---------:|:-----------:|:-------:|:---------:|:------------------:|
-| 1 | VGG16-bn | 138M | X | 83.2% |lr=1e-4, batch_size=64, epochs=20 | 60분 (3분/epoch) |
-| 2 | VGG16-bn | 138M | O | 86.4% |lr=1e-4, batch_size=64, epochs=14 | 190분 (13.5분/epoch) |
-| 3 | ResNet-50 | 25M | X | 81.7% |lr=2e-4, batch_size=32, epochs=10 | 20분 (2분/epoch) |
-| 4 | ResNet-50 | 25M | O | 83.0% |lr=1e-4, batch_size=32, epochs=15 | 170분 (11.5분/epoch) |
+| No. | 실험 모델 | 파라미터 | 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
+|:---:|:--------:|:---------:|:----:|:-------:|:---------:|:------------------:|
+| 1 | VGG16-bn | 138M | X | 83.2% |LR=1e-4, Batch_size=64, Epochs=20 | 60분 (3분/Epoch) |
+| 2 | VGG16-bn | 138M | O | 86.4% |LR=1e-4, Batch_size=64, Epochs=14 | 190분 (13.5분/Epoch) |
+| 3 | ResNet-50 | 25M | X | 81.7% |LR=2e-4, Batch_size=32, Epochs=10 | 20분 (2분/Epoch) |
+| 4 | ResNet-50 | 25M | O | 83.0% |LR=1e-4, Batch_size=32, Epochs=15 | 170분 (11.5분/Epoch) |
 
 # **3. 재학습 결과 (26.01)**
 아래는 재학습한 결과입니다. 전과 마찬가지로 ResNet50의 성능이 VGG-16-bn보다 좋게 나오지 않았습니다.  
@@ -51,23 +51,25 @@ Pytorch에 구현된 모델과 동일한 구조, 동일한 파라미터 수(25M)
 - RandomHorizontalFlip(p=0.5)  
 - ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05)  
 
-| No. | 실험 모델 | 파라미터 | 데이터 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
-|:---:|:--------:|:---------:|:-----------:|:-------:|:---------:|:------------------:|
-| 1 | VGG16    | 138M | X | 78.98% |lr=1e-4, batch_size=64, epochs=60 | 92분 (1.5분/epoch) |
-| 2 | VGG16    | 138M |  O | 82.37% |lr=1e-4, batch_size=64, epochs=60 | 92분 (1.5분/epoch)|
-| 3 | **ResNet-50** | 25M |  X | **86.93%** |lr=1e-4, batch_size=64, epochs=60 | 57분 (1분/epoch)|
-| 4 | **ResNet-50** | 25M |  O | **87.34%** |lr=1e-4, batch_size=64, epochs=60 | 57분 (1분/epoch)|
-| 5 | VGG16-bn | 138M |  X | 89.71% |lr=1e-4, batch_size=64, epochs=60 | 112분 (1.9분/epoch)|
-| 6 | VGG16-bn | 138M |  O | 90.75% |lr=1e-4, batch_size=64, epochs=60 | 112분 (1.9분/epoch)|
+| No. | 실험 모델 | 파라미터 | 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
+|:---:|:--------:|:---------:|:----:|:-------:|:---------:|:------------------:|
+| 1 | VGG16         | 138M | X | 78.98%    |LR=1e-4, Batch_size=64, Epochs=60 | 92분 (1.5분/Epoch) |
+| 2 | VGG16         | 138M | O | 82.37%    |LR=1e-4, Batch_size=64, Epochs=60 | 92분 (1.5분/Epoch)|
+| 3 | **ResNet-50** | 25M | X | **86.93%** |LR=1e-4, Batch_size=64, Epochs=60 | 57분 (1분/Epoch)|
+| 4 | **ResNet-50** | 25M | O | **87.34%** |LR=1e-4, Batch_size=64, Epochs=60 | 57분 (1분/Epoch)|
+| 5 | VGG16-bn      | 138M | X | 89.71%    |LR=1e-4, Batch_size=64, Epochs=60 | 112분 (1.9분/Epoch)|
+| 6 | VGG16-bn      | 138M | O | 90.75%    |LR=1e-4, Batch_size=64, Epochs=60 | 112분 (1.9분/Epoch)|
+
+<img width="790" height="590" alt="image" src="https://github.com/user-attachments/assets/7aab892e-0bb4-4740-8371-f17322bfefde" />
 
 증강 여부를 기준으로 정렬하면 다음과 같습니다.
 
-| No. | 실험 모델 | 파라미터 | 데이터 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
-|:---:|:--------:|:---------:|:-----------:|:-------:|:---------:|:------------------:|
-| 1 | VGG-16    | 138M | X | 78.98%         |lr=1e-4, batch_size=64, epochs=60 | 92분 (1.5분/epoch) |
-| 2 | **ResNet-50** | 25M | X | **86.93%** |lr=1e-4, batch_size=64, epochs=60 | 57분 (1분/epoch)|
-| 3 | VGG-16-bn | 138M | X | 89.71%         |lr=1e-4, batch_size=64, epochs=60 | 112분 (1.9분/epoch)|
+| No. | 실험 모델 | 파라미터 | 증강 | Val Acc | 학습 상세 | 학습 시간 (L4 GPU) |
+|:---:|:--------:|:---------:|:----:|:-------:|:---------:|:------------------:|
+| 1 | VGG-16        | 138M | X | 78.98%    |LR=1e-4, Batch_size=64, Epochs=60 | 92분 (1.5분/Epoch) |
+| 2 | **ResNet-50** | 25M | X | **86.93%** |LR=1e-4, Batch_size=64, Epochs=60 | 57분 (1분/Epoch)|
+| 3 | VGG-16-bn     | 138M | X | 89.71%    |LR=1e-4, Batch_size=64, Epochs=60 | 112분 (1.9분/Epoch)|
 |||||||
-| 4 | VGG-16    | 138M | O | 82.37%         |lr=1e-4, batch_size=64, epochs=60 | 92분 (1.5분/epoch)|
-| 5 | **ResNet-50** | 25M | O | **87.34%** |lr=1e-4, batch_size=64, epochs=60 | 57분 (1분/epoch)|
-| 6 | VGG-16-bn | 138M | O | 90.75%         |lr=1e-4, batch_size=64, epochs=60 | 112분 (1.9분/epoch)|
+| 4 | VGG-16        | 138M | O | 82.37%    |LR=1e-4, Batch_size=64, Epochs=60 | 92분 (1.5분/Epoch)|
+| 5 | **ResNet-50** | 25M | O | **87.34%** |LR=1e-4, Batch_size=64, Epochs=60 | 57분 (1분/Epoch)|
+| 6 | VGG-16-bn     | 138M | O | 90.75%    |LR=1e-4, Batch_size=64, Epochs=60 | 112분 (1.9분/Epoch)|
